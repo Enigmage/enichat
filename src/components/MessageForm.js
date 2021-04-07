@@ -9,10 +9,12 @@ const MessageForm = (props) => {
         const messageText = message.trim();
         console.log(messageText);
         console.log(creds);
-        const {projectID, userName, userSecret} = creds;
-        const authObject ={projectID, userName, userSecret} 
-        const callback = (data) => console.log(`this is if api works ${Object.keys(data)}`);
-        if (messageText.length > 0) sendMessage(authObject, chatID, { text:messageText }, callback);
+        const { projectID, userName, userSecret } = creds;
+        const authObject = { projectID, userName, userSecret };
+        const callback = (data) =>
+            console.log(`this is if api works ${Object.keys(data)}`);
+        if (messageText.length > 0)
+            sendMessage(authObject, chatID, { text: messageText }, callback);
         setMessage("");
     };
     return (
@@ -21,7 +23,7 @@ const MessageForm = (props) => {
                 className="message-input"
                 placeholder="Chat away..."
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={(e) => {setMessage(e.target.value); isTyping(props, chatID);}}
                 onSubmit={handleSubmit}
             />
             <input type="submit" value="Submit" />
