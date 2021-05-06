@@ -27,6 +27,10 @@ const TheirMessage = ({ message, lastMessage }) => {
                         backgroundColor: "whitesmoke",
                         marginLeft: isFirstMessage ? "4px" : "48px",
                     }}>
+                    <span style={{ color: "blue" }}>
+                        {message.sender.username}
+                    </span>
+                    <br/>
                     {message.text}
                 </div>
             )}

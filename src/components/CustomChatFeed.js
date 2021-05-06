@@ -3,11 +3,9 @@ import MessageBubbles from "./MessageBubbles";
 
 const CustomChatFeed = (chatAppProps) => {
     const { chats, activeChat, userName, messages } = chatAppProps;
+    console.log(chatAppProps);
     const chat = chats && chats[activeChat];
-    console.log(`THis messages ${messages}`);
-
     if (!chat) return <div />;
-
     return (
         <div className="chat-feed">
             <div className="chat-title-container">
@@ -17,8 +15,8 @@ const CustomChatFeed = (chatAppProps) => {
                 </div>
             </div>
             <MessageBubbles userName={userName} messages={messages} />
-            <div style={{ width: "100px" }} />
-            <div className="message-form-conti">
+            <div style={{ height: "100px" }} />
+            <div className="message-form-container">
                 <MessageForm {...chatAppProps} chatId={activeChat} />
             </div>
         </div>

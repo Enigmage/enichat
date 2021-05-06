@@ -1,33 +1,52 @@
 import { useState } from "react";
 import { sendMessage, isTyping } from "react-chat-engine";
+import { PictureOutlined, SendOutlined } from "@ant-design/icons";
 
 const MessageForm = (props) => {
     const [message, setMessage] = useState("");
     const { chatId, creds } = props;
+
+    const handleChange = (e) => {
+        setMessage(e.target.value);
+        isTyping(props, chatId);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const messageText = message.trim();
-        console.log(messageText);
-        console.log("creds below");
-        console.log(creds);
-        const { projectID, userName, userSecret } = creds;
-        const authObject = { projectID, userName, userSecret };
-        const callback = (data) =>
-            console.log(`this is if api works ${Object.keys(data)}`);
         if (messageText.length > 0)
-            sendMessage(authObject, chatId, { text: messageText }, callback);
+            sendMessage(creds, chatId, { text: messageText });
         setMessage("");
     };
+
+    const handleUpload = (e) => {
+        sendMessage(creds, chatId, { files: e.target.files, text: "" });
+    };
+
     return (
         <form className="message-form" onSubmit={handleSubmit}>
             <input
                 className="message-input"
                 placeholder="Chat away..."
                 value={message}
-                onChange={(e) => {setMessage(e.target.value); isTyping(props, chatId);}}
+                onChange={handleChange}
                 onSubmit={handleSubmit}
             />
-            <input type="submit" value="Submit" />
+            <label htmlFor="upload-button">
+                <span className="image-button">
+                    <PictureOutlined className="picture-icon" />
+                </span>
+            </label>
+            <input
+                type="file"
+                multiple={false}
+                id="upload-button"
+                style={{ display: "none" }}
+                onChange={handleUpload}
+            />
+            <button type="submit" className="send-button">
+                <SendOutlined className="send-icon" />
+            </button>
         </form>
     );
 };

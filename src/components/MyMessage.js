@@ -1,7 +1,5 @@
 const MyMessage = ({ message }) => {
     // Check if message is image or text.
-    console.log("Inside hell");
-    console.log(`The supposed ${message} object`);
     if (message?.attachments?.length > 0) {
         return (
             <img
