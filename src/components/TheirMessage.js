@@ -5,7 +5,7 @@ const TheirMessage = ({ message, lastMessage }) => {
         <div className="message-row">
             {isFirstMessage && (
                 <div
-                    class="message-avatar"
+                    className="message-avatar"
                     style={{
                         backgroundImage: `url(${message?.sender?.avatar})`,
                     }}
@@ -20,7 +20,7 @@ const TheirMessage = ({ message, lastMessage }) => {
                 />
             ) : (
                 <div
-                    class="message-text"
+                    className="message-text"
                     style={{
                         float: "left",
                         color: "black",

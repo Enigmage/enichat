@@ -1,5 +1,7 @@
 const MyMessage = ({ message }) => {
     // Check if message is image or text.
+    console.log("Inside hell");
+    console.log(`The supposed ${message} object`);
     if (message?.attachments?.length > 0) {
         return (
             <img
@@ -12,7 +14,7 @@ const MyMessage = ({ message }) => {
     }
     return (
         <div
-            class="message-text"
+            className="message-text"
             style={{
                 float: "right",
                 marginRight: "18px",

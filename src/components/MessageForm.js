@@ -3,18 +3,19 @@ import { sendMessage, isTyping } from "react-chat-engine";
 
 const MessageForm = (props) => {
     const [message, setMessage] = useState("");
-    const { chatID, creds } = props;
+    const { chatId, creds } = props;
     const handleSubmit = (e) => {
         e.preventDefault();
         const messageText = message.trim();
         console.log(messageText);
+        console.log("creds below");
         console.log(creds);
         const { projectID, userName, userSecret } = creds;
         const authObject = { projectID, userName, userSecret };
         const callback = (data) =>
             console.log(`this is if api works ${Object.keys(data)}`);
         if (messageText.length > 0)
-            sendMessage(authObject, chatID, { text: messageText }, callback);
+            sendMessage(authObject, chatId, { text: messageText }, callback);
         setMessage("");
     };
     return (
@@ -23,7 +24,7 @@ const MessageForm = (props) => {
                 className="message-input"
                 placeholder="Chat away..."
                 value={message}
-                onChange={(e) => {setMessage(e.target.value); isTyping(props, chatID);}}
+                onChange={(e) => {setMessage(e.target.value); isTyping(props, chatId);}}
                 onSubmit={handleSubmit}
             />
             <input type="submit" value="Submit" />
