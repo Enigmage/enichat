@@ -30,7 +30,7 @@ const TheirMessage = ({ message, lastMessage }) => {
                     <span style={{ color: "blue" }}>
                         {message.sender.username}
                     </span>
-                    <br/>
+                    <br />
                     {message.text}
                 </div>
             )}
