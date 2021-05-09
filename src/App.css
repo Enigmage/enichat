@@ -23,7 +23,7 @@
 
 .ce-active-chat-card {
     background-color: var(--watermelon) !important;
-    border: 1px solid black !important;
+    border: 1px solid var(--sky) !important;
     border-radius: 10px !important;
 }
 
