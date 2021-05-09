@@ -4,12 +4,19 @@ const TheirMessage = ({ message, lastMessage }) => {
     return (
         <div className="message-row">
             {isFirstMessage && (
-                <div
-                    className="message-avatar"
-                    style={{
-                        backgroundImage: `url(${message?.sender?.avatar})`,
-                    }}
-                />
+                <div style={{ textAlign: "center" }}>
+                    <div
+                        className="message-avatar"
+                        style={{
+                            backgroundImage: `url(${message?.sender?.avatar})`,
+                        }}
+                    />
+                    <div>
+                        <span className="message-text" style={{ color: "red" }}>
+                            {message.sender.username}
+                        </span>
+                    </div>
+                </div>
             )}
             {message?.attachments?.length > 0 ? (
                 <img
@@ -26,11 +33,8 @@ const TheirMessage = ({ message, lastMessage }) => {
                         color: "black",
                         backgroundColor: "whitesmoke",
                         marginLeft: isFirstMessage ? "4px" : "48px",
+                        borderRadius: "8px",
                     }}>
-                    <span style={{ color: "blue" }}>
-                        {message.sender.username}
-                    </span>
-                    <br />
                     {message.text}
                 </div>
             )}

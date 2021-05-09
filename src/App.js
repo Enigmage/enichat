@@ -1,19 +1,46 @@
 //Imports
-import { ChatEngine } from "react-chat-engine";
-import CustomChatFeed from "./components/CustomChatFeed";
-import './App.css';
+import { useState } from "react";
+import { Route, Switch } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
+import Home from "./components/Home";
+import "./App.css";
 
 const App = () => {
-    if(!localStorage.getItem('username')) return <LoginForm />
+    const initialValue = localStorage.getItem('username') ? true : false;
+    const [isLogin, setLogin] = useState(initialValue);
+    const setLoginStatus = (value) => setLogin(value);
     return (
-        <ChatEngine
-            height="100vh"
-            projectID={process.env.REACT_APP_PROJECT_ID}
-            userName={localStorage.getItem('username')}
-            userSecret={localStorage.getItem('password')}
-            renderChatFeed={(chatAppProps) => <CustomChatFeed {...chatAppProps} /> }
-        />
+        <Switch>
+            <Route path="/" exact render={() => <Home isLogin={isLogin} />} />
+            <Route
+                path="/login"
+                exact
+                render={() => (
+                    <LoginForm
+                        isLogin={isLogin}
+                        setLoginStatus={setLoginStatus}
+                    />
+                )}
+            />
+            <Route
+                path="/signup"
+                exact
+                render={() => (
+                    <SignupForm
+                        isLogin={isLogin}
+                        setLoginStatus={setLoginStatus}
+                    />
+                )}
+            />
+            <Route
+                render={() => (
+                    <div>
+                        <h1>Oops, wrong URL !!</h1>
+                    </div>
+                )}
+            />
+        </Switch>
     );
 };
 

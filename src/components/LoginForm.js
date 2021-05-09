@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import useForm from "../utils/useForm";
 
-const LoginForm = () => {
+const LoginForm = ({ isLogin, setLoginStatus }) => {
     const [credentials, setCredentials] = useForm({
         username: "",
         password: "",
@@ -22,13 +24,13 @@ const LoginForm = () => {
             });
             localStorage.setItem("username", credentials.username);
             localStorage.setItem("password", credentials.password);
-            window.location.reload();
+            setLoginStatus(true);
             setError("");
-        } catch (error) {
+        } catch (err) {
             setError("Invalid credentials !!");
         }
     };
-
+    if (isLogin) return <Redirect to="/" />;
     return (
         <div className="wrapper">
             <div className="form">
@@ -58,7 +60,18 @@ const LoginForm = () => {
                         </button>
                     </div>
                 </form>
-                <h1>{error}</h1>
+                <div align="center">
+                    New user ?{" "}
+                    <span style={{ color: "blue" }}>
+                        {" "}
+                        <Link to="/signup"> Sign Up</Link>{" "}
+                    </span>
+                </div>
+                <div align="center">
+                    <h1>
+                        <span style={{ color: "black" }}>{error}</span>
+                    </h1>
+                </div>
             </div>
         </div>
     );
