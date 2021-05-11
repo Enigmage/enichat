@@ -64,7 +64,7 @@ const LoginForm = ({ isLogin, setLoginStatus }) => {
                     New user ?{" "}
                     <span style={{ color: "blue" }}>
                         {" "}
-                        <Link to="/signup"> Sign Up</Link>{" "}
+                        <Link to="/signup" className="signup-link"> Sign Up</Link>{" "}
                     </span>
                 </div>
                 <div align="center">

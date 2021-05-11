@@ -79,7 +79,7 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
                         Already have an account ?{" "}
                         <span style={{ color: "blue" }}>
                             {" "}
-                            <Link to="/login"> Log In </Link>{" "}
+                            <Link to="/login" className="login-link"> Log In </Link>{" "}
                         </span>
                     </span>
                 </div>
