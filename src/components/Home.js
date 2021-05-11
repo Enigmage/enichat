@@ -1,6 +1,7 @@
 import { ChatEngine } from "react-chat-engine";
 import { Redirect } from "react-router";
 import CustomChatFeed from "./CustomChatFeed";
+import CustomChatSettings from "./CustomChatSettings";
 
 const Home = ({ isLogin }) => {
     if (!isLogin) return <Redirect to="/login" />;
@@ -12,6 +13,9 @@ const Home = ({ isLogin }) => {
             userSecret={localStorage.getItem("password")}
             renderChatFeed={(chatAppProps) => (
                 <CustomChatFeed {...chatAppProps} />
+            )}
+            renderChatSettings={(chatAppProps) => (
+                <CustomChatSettings {...chatAppProps} />
             )}
         />
     );

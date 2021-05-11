@@ -59,7 +59,7 @@
 }
 
 .ce-settings {
-    background-color: rgb(240, 240, 240) !important;
+    background-color: var(--neutral) !important;
 }
 
 .ce-autocomplete-input {
@@ -312,3 +312,4 @@
     text-align: center;
     margin-top: 20px;
 }
+
