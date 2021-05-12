@@ -8,7 +8,7 @@ const CustomChatFeed = (chatAppProps) => {
     return (
         <div className="chat-feed">
             <div className="chat-title-container">
-                <div className="chat-title">#{chat?.title}</div>
+                <div className="chat-title">#{chat.title}</div>
             </div>
             <MessageBubbles userName={userName} messages={messages} />
             <div style={{ height: "100px" }} />

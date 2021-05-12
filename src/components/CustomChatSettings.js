@@ -20,7 +20,7 @@ const CustomChatSettings = (props) => {
                 {props && chat && props.userName === chat.admin.username && (
                     <OptionsSettings {...props} />
                 )}
-                <CustomOptionSettings {...props} chatId={activeChat} />
+                <CustomOptionSettings {...props} chatId={activeChat} chat={chat} />
             </div>
         </div>
     );

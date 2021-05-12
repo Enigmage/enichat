@@ -1,3 +1,5 @@
+import GenericProfilePicture from "../utils/images/generic-profile-pic.png";
+
 const TheirMessage = ({ message, lastMessage }) => {
     const isFirstMessage =
         !lastMessage || lastMessage.sender.username !== message.sender.username;
@@ -8,34 +10,58 @@ const TheirMessage = ({ message, lastMessage }) => {
                     <div
                         className="message-avatar"
                         style={{
-                            backgroundImage: `url(${message?.sender?.avatar})`,
+                            backgroundImage:
+                                message &&
+                                message.sender &&
+                                message.sender.avatar
+                                    ? `url(${message.sender.avatar})`
+                                    : `url(${GenericProfilePicture})`,
                         }}
                     />
-                    <div>
-                        <span className="message-text" style={{ color: "red" }}>
-                            {message.sender.username}
-                        </span>
-                    </div>
                 </div>
             )}
-            {message?.attachments?.length > 0 ? (
-                <img
-                    src={message.attachments[0].file}
-                    alt="message-attachment"
-                    className="message-image"
-                    style={{ marginLeft: isFirstMessage ? "4px" : "48px" }}
-                />
+            {message &&
+            message.attachments &&
+            message.attachments.length > 0 ? (
+                <div>
+                    {isFirstMessage && (
+                        <div>
+                            <span
+                                className="message-heading"
+                                style={{ color: "red" }}>
+                                {message.sender.username}
+                            </span>
+                        </div>
+                    )}
+                    <img
+                        src={message.attachments[0].file}
+                        alt="message-attachment"
+                        className="message-image"
+                        style={{ marginLeft: isFirstMessage ? "4px" : "48px" }}
+                    />
+                </div>
             ) : (
-                <div
-                    className="message-text"
-                    style={{
-                        float: "left",
-                        color: "black",
-                        backgroundColor: "whitesmoke",
-                        marginLeft: isFirstMessage ? "4px" : "48px",
-                        borderRadius: "8px",
-                    }}>
-                    {message.text}
+                <div>
+                    {isFirstMessage && (
+                        <div>
+                            <span
+                                className="message-heading"
+                                style={{ color: "red" }}>
+                                {message.sender.username}
+                            </span>
+                        </div>
+                    )}
+                    <div
+                        className="message-text"
+                        style={{
+                            float: "left",
+                            color: "black",
+                            backgroundColor: "#a9a9a9",
+                            marginLeft: isFirstMessage ? "4px" : "48px",
+                            borderRadius: "5px",
+                        }}>
+                        {message.text}
+                    </div>
                 </div>
             )}
         </div>

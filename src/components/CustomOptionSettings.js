@@ -1,7 +1,7 @@
 import { leaveChat } from "react-chat-engine";
 
 const CustomOptionSettings = (props) => {
-    const { creds, chatId } = props;
+    const { creds, chatId, chat } = props;
     const leaveGroup = () => {
         leaveChat(creds, chatId);
     };
@@ -17,9 +17,14 @@ const CustomOptionSettings = (props) => {
                 className="logout-button">
                 Log Out
             </button>
-            <button onClick={() => leaveGroup()} className="leave-group-button">
-                Leave Group
-            </button>
+
+            {chat && (
+                <button
+                    onClick={() => leaveGroup()}
+                    className="leave-group-button">
+                    Leave Group
+                </button>
+            )}
         </div>
     );
 };
