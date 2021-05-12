@@ -7,6 +7,8 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
     const [credentials, setCredentials] = useForm({
         username: "",
         password: "",
+        firstName: "",
+        lastName: "",
         confirmPassword: "",
     });
     const [error, setError] = useState("");
@@ -18,6 +20,8 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
         const data = {
             username: credentials.username,
             secret: credentials.password,
+            first_name: credentials.firstName,
+            last_name: credentials.lastName,
         };
         if (credentials.password !== credentials.confirmPassword) {
             setError("Passwords don't match !!");
@@ -37,10 +41,28 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
     };
     if (isLogin) return <Redirect to="/" />;
     return (
-        <div class="wrapper">
+        <div class="wrapper" style={{overflow:"scroll"}}>
             <div class="form">
                 <h1 className="title">Enichat</h1>
                 <form onSubmit={handleSubmit}>
+                    <input
+                        name="firstName"
+                        type="text"
+                        value={credentials.firstName}
+                        className="input"
+                        onChange={setCredentials}
+                        placeholder="First Name"
+                        required
+                    />
+                    <input
+                        name="lastName"
+                        type="text"
+                        value={credentials.lastName}
+                        className="input"
+                        onChange={setCredentials}
+                        placeholder="Last Name"
+                        required
+                    />
                     <input
                         name="username"
                         type="text"

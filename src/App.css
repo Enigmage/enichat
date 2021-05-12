@@ -62,6 +62,7 @@
 .ce-settings {
     background-color: var(--primary3) !important;
     color: var(--background2);
+    overflow:scroll;
 }
 
 .ce-autocomplete-input {
@@ -227,7 +228,7 @@
     color: #333;
     font-size: 1.2rem;
     margin: 0 auto;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     border-radius: 0.2rem;
     background-color: rgb(255, 255, 255);
     border: none;
@@ -314,12 +315,12 @@
     color: lightgreen;
 }
 .logout-button {
-    position: absolute;
-    bottom: 10px;
-    width: 90%;
+    /* position: absolute; */
+    margin-top: 10px;
+    width: 100%;
     color: var(--background2) !important;
     border: solid 1px var(--background2) !important;
-    height: 5%;
+    height: 2rem;
 }
 
 .logout-button:hover {
@@ -327,12 +328,12 @@
 }
 
 .leave-group-button {
-    position: absolute;
-    bottom: 50px;
-    width: 90%;
+    /* position: absolute; */
+    margin-top: 50px;
+    width: 100%;
     color: var(--background2) !important;
     border: solid 1px var(--background2) !important;
-    height: 5%;
+    height: 2rem;
 }
 
 .leave-group-button:hover {

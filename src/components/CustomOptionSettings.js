@@ -12,12 +12,6 @@ const CustomOptionSettings = (props) => {
     };
     return (
         <div>
-            <button
-                onClick={() => logOutCurrentUser()}
-                className="logout-button">
-                Log Out
-            </button>
-
             {chat && (
                 <button
                     onClick={() => leaveGroup()}
@@ -25,6 +19,12 @@ const CustomOptionSettings = (props) => {
                     Leave Group
                 </button>
             )}
+            <button
+                onClick={() => logOutCurrentUser()}
+                className="logout-button">
+                Log Out
+            </button>
+
         </div>
     );
 };
