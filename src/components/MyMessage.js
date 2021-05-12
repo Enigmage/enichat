@@ -1,13 +1,15 @@
+import ModalImage from "react-modal-image";
 const MyMessage = ({ message }) => {
     // Check if message is image or text.
     if (message && message.attachments && message.attachments.length > 0) {
         return (
-            <img
-                src={message.attachments[0].file}
-                alt="message-attachment"
-                className="message-image"
-                style={{ float: "right" }}
-            />
+            <div className="message-image" style={{ float: "right" }}>
+                <ModalImage
+                    small={message.attachments[0].file}
+                    large={message.attachments[0].file}
+                    alt="message-attachment"
+                />
+            </div>
         );
     }
     return (
@@ -18,7 +20,7 @@ const MyMessage = ({ message }) => {
                 marginRight: "18px",
                 color: "whitesmoke",
                 backgroundColor: "#ab0000",
-                borderRadius: "5px", 
+                borderRadius: "5px",
             }}>
             {message.text}
         </div>

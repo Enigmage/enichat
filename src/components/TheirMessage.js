@@ -1,4 +1,5 @@
 import GenericProfilePicture from "../utils/images/generic-profile-pic.png";
+import ModalImage from "react-modal-image";
 
 const TheirMessage = ({ message, lastMessage }) => {
     const isFirstMessage =
@@ -33,12 +34,15 @@ const TheirMessage = ({ message, lastMessage }) => {
                             </span>
                         </div>
                     )}
-                    <img
-                        src={message.attachments[0].file}
-                        alt="message-attachment"
+                    <div
                         className="message-image"
-                        style={{ marginLeft: isFirstMessage ? "4px" : "48px" }}
-                    />
+                        style={{ marginLeft: isFirstMessage ? "4px" : "48px" }}>
+                        <ModalImage
+                            small={message.attachments[0].file}
+                            alt="message-attachment"
+                            large={message.attachments[0].file}
+                        />
+                    </div>
                 </div>
             ) : (
                 <div>
