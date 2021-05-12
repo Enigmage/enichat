@@ -1,3 +1,9 @@
 # Enichat
 
-A group chat application made using React and Chat Engine API.
+A real time group chat application made using React and Chat Engine API.
+
+
+### Dashboard
+
+![dash](.github/dashboard.png)
+
