@@ -62,7 +62,7 @@
 .ce-settings {
     background-color: var(--primary3) !important;
     color: var(--background2);
-    overflow:scroll;
+    overflow: scroll;
 }
 
 .ce-autocomplete-input {
@@ -338,4 +338,9 @@
 
 .leave-group-button:hover {
     background-color: red !important;
+}
+
+.right-click-menu {
+    background-color: whitesmoke !important;
+    color: red !important;
 }

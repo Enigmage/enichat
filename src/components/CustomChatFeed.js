@@ -2,7 +2,7 @@ import MessageForm from "./MessageForm";
 import MessageBubbles from "./MessageBubbles";
 
 const CustomChatFeed = (chatAppProps) => {
-    const { chats, activeChat, userName, messages } = chatAppProps;
+    const { chats, activeChat, userName, messages, userSecret} = chatAppProps;
     const chat = chats && chats[activeChat];
     if (!chat) return <div />;
     return (
@@ -10,7 +10,7 @@ const CustomChatFeed = (chatAppProps) => {
             <div className="chat-title-container">
                 <div className="chat-title">#{chat.title}</div>
             </div>
-            <MessageBubbles userName={userName} messages={messages} />
+            <MessageBubbles userName={userName} messages={messages} chatId={activeChat} userSecret={userSecret} />
             <div style={{ height: "100px" }} />
             <div className="message-form-container">
                 <MessageForm {...chatAppProps} chatId={activeChat} />
