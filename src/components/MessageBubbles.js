@@ -5,7 +5,7 @@ import axios from "axios";
 
 const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
     const keys = Object.keys(messages);
-    const handleDelete =  (e, data) => {
+    const handleDelete = async (e, data) => {
         const { chat_id, message_id } = data;
         const headerObject = {
             "Project-ID": process.env.REACT_APP_PROJECT_ID,
@@ -13,7 +13,7 @@ const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
             "User-Secret": userSecret,
         };
         try {
-             axios.delete(
+             await axios.delete(
                 `https://api.chatengine.io/chats/${chat_id}/messages/${message_id}/`,
                 { headers: headerObject }
             );
