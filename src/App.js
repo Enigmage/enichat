@@ -6,8 +6,9 @@ import Home from "./components/Home";
 import "./App.css";
 
 const App = () => {
-    const initialValue = localStorage.getItem('username') ? true : false;
-    const [isLogin, setLogin] = useState(initialValue);
+    const [isLogin, setLogin] = useState(() =>
+        localStorage.getItem("username") ? true : false
+    );
     const setLoginStatus = (value) => setLogin(value);
     return (
         <Switch>
