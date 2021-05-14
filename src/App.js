@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
-import Home from "./components/Home";
+import { LoginForm, SignupForm, Home } from "./components";
 import "./App.css";
 
 const App = () => {

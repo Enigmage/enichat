@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import useForm from "../utils/useForm";
+import useForm from "../../utils/useForm";
 
 const SignupForm = ({ isLogin, setLoginStatus }) => {
     const [credentials, setCredentials] = useForm({

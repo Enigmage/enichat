@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import useForm from "../utils/useForm";
+import useForm from "../../utils/useForm";
 
 const LoginForm = ({ isLogin, setLoginStatus }) => {
     const [credentials, setCredentials] = useForm({
