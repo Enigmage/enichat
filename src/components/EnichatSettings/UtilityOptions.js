@@ -1,6 +1,6 @@
 import { leaveChat } from "react-chat-engine";
 
-const CustomOptionSettings = (props) => {
+const UtilityOptions = (props) => {
     const { creds, chatId, chat } = props;
     const leaveGroup = () => {
         leaveChat(creds, chatId);
@@ -28,4 +28,4 @@ const CustomOptionSettings = (props) => {
         </div>
     );
 };
-export default CustomOptionSettings;
+export default UtilityOptions;

@@ -4,9 +4,9 @@ import {
     PeopleSettings,
     PhotosSettings,
 } from "react-chat-engine";
-import CustomOptionSettings from "./CustomOptionSettings";
+import UtilityOptions from "./UtilityOptions";
 
-const CustomChatSettings = (props) => {
+const EnichatSettings = (props) => {
     const { chats, activeChat } = props;
     const chat = chats && chats[activeChat];
     return (
@@ -20,12 +20,12 @@ const CustomChatSettings = (props) => {
                 {props && chat && props.userName === chat.admin.username && (
                     <OptionsSettings {...props} />
                 )}
-                <CustomOptionSettings {...props} chatId={activeChat} chat={chat} />
+                <UtilityOptions {...props} chatId={activeChat} chat={chat} />
             </div>
         </div>
     );
 };
-export default CustomChatSettings;
+export default EnichatSettings;
 
 const styles = {
     settingsContainer: {

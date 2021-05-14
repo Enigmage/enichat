@@ -1,7 +1,7 @@
 import MessageForm from "./MessageForm";
 import MessageBubbles from "./MessageBubbles";
 
-const CustomChatFeed = (chatAppProps) => {
+const EnichatFeed = (chatAppProps) => {
     const { chats, activeChat, userName, messages, userSecret} = chatAppProps;
     const chat = chats && chats[activeChat];
     if (!chat) return <div />;
@@ -19,4 +19,4 @@ const CustomChatFeed = (chatAppProps) => {
     );
 };
 
-export default CustomChatFeed;
+export default EnichatFeed;

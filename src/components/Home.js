@@ -1,7 +1,7 @@
 import { ChatEngine } from "react-chat-engine";
 import { Redirect } from "react-router";
-import CustomChatFeed from "./CustomChatFeed";
-import CustomChatSettings from "./CustomChatSettings";
+import EnichatFeed from "./EnichatFeed";
+import EnichatSettings from "./EnichatSettings";
 
 const Home = ({ isLogin }) => {
     if (!isLogin) return <Redirect to="/login" />;
@@ -12,10 +12,10 @@ const Home = ({ isLogin }) => {
             userName={localStorage.getItem("username")}
             userSecret={localStorage.getItem("password")}
             renderChatFeed={(chatAppProps) => (
-                <CustomChatFeed {...chatAppProps} />
+                <EnichatFeed {...chatAppProps} />
             )}
             renderChatSettings={(chatAppProps) => (
-                <CustomChatSettings {...chatAppProps} />
+                <EnichatSettings {...chatAppProps} />
             )}
         />
     );

@@ -1,4 +1,4 @@
-import GenericProfilePicture from "../utils/images/generic-profile-pic.png";
+import GenericProfilePicture from "../../utils/images/generic-profile-pic.png";
 import ModalImage from "react-modal-image";
 
 const TheirMessage = ({ message, lastMessage }) => {
