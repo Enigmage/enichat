@@ -5,9 +5,11 @@ import axios from "axios";
 import { useState } from "react";
 
 const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
-    const [isEditing, setIsEditing] = useState(false);
+    const [editMessageId, setEditMessageId] = useState(-1);
     const [newMessage, setNewMessage] = useState("");
+
     const keys = Object.keys(messages);
+
     const handleDelete = async (e, data) => {
         const { chat_id, message_id } = data;
         const headerObject = {
@@ -16,7 +18,7 @@ const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
             "User-Secret": userSecret,
         };
         try {
-             await axios.delete(
+            await axios.delete(
                 `https://api.chatengine.io/chats/${chat_id}/messages/${message_id}/`,
                 { headers: headerObject }
             );
@@ -42,7 +44,7 @@ const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
                 body,
                 { headers: headerObject }
             );
-            setIsEditing(false);
+            setEditMessageId(-1);
             setNewMessage("");
         } catch (err) {
             console.log(err);
@@ -61,7 +63,7 @@ const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
                         <div key={`msg_${index}`} style={{ width: "100%" }}>
                             <div className="message-block">
                                 {isMyMessage ? (
-                                    isEditing ? (
+                                    message.id == editMessageId ? (
                                         <div>
                                             <form
                                                 onSubmit={handleEdit({
@@ -104,15 +106,20 @@ const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
                                                     onClick={handleDelete}>
                                                     Delete
                                                 </MenuItem>
-                                                <MenuItem
-                                                    onClick={() => {
-                                                        setIsEditing(true);
-                                                        setNewMessage(
-                                                            message.text
-                                                        );
-                                                    }}>
-                                                    Edit
-                                                </MenuItem>
+                                                {!message?.attachments
+                                                    ?.length && (
+                                                    <MenuItem
+                                                        onClick={() => {
+                                                            setEditMessageId(
+                                                                message.id
+                                                            );
+                                                            setNewMessage(
+                                                                message.text
+                                                            );
+                                                        }}>
+                                                        Edit
+                                                    </MenuItem>
+                                                )}
                                             </ContextMenu>
                                         </div>
                                     )
