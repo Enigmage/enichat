@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { rememberUser, useForm } from "../../utils";
 
