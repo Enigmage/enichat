@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { rememberUser, useForm } from "../../utils";
 
@@ -12,7 +12,6 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
         confirmPassword: "",
     });
     const [error, setError] = useState("");
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const headerObject = {
@@ -41,8 +40,8 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
     };
     if (isLogin) return <Redirect to="/" />;
     return (
-        <div class="wrapper" style={{ overflow: "scroll" }}>
-            <div class="form">
+        <div className="wrapper" style={{ overflow: "scroll" }}>
+            <div className="form">
                 <h1 className="title">Enichat</h1>
                 <form onSubmit={handleSubmit}>
                     <input
@@ -77,7 +76,11 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
                         type="password"
                         value={credentials.password}
                         onChange={setCredentials}
-                        className="input"
+                        className={`input ${
+                            credentials.password === credentials.confirmPassword
+                                ? "flash-green"
+                                : "flash-red"
+                        }`}
                         placeholder="Password"
                         required
                     />
@@ -86,12 +89,22 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
                         type="password"
                         value={credentials.confirmPassword}
                         onChange={setCredentials}
-                        className="input"
+                        className={`input ${
+                            credentials.password === credentials.confirmPassword
+                                ? "flash-green"
+                                : "flash-red"
+                        }`}
                         placeholder="Confirm Password"
                         required
                     />
                     <div align="center">
-                        <button className="button" type="submit">
+                        <button
+                            disabled={
+                                credentials.password !==
+                                credentials.confirmPassword
+                            }
+                            className="button"
+                            type="submit">
                             <span>Sign Up</span>
                         </button>
                     </div>

@@ -343,3 +343,9 @@
 .right-click-menu {
     background-color: whitesmoke !important;
 }
+.flash-red {
+    border: 5px solid red !important;
+}
+.flash-green {
+    border: 5px solid lightgreen !important;
+}
