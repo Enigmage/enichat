@@ -1,6 +1,33 @@
+import axios from "axios";
 import { useState } from "react";
-import { sendMessage } from "react-chat-engine";
 import { PictureOutlined, SendOutlined } from "@ant-design/icons";
+
+const sendChatMessage = async (creds, chatId, messageObject) => {
+    const { userSecret, userName } = creds;
+    const headerObject = {
+        "Project-ID": process.env.REACT_APP_PROJECT_ID,
+        "User-Name": userName,
+        "User-Secret": userSecret,
+    };
+    const formData = new FormData();
+    if (messageObject.files) {
+        formData.append(
+            "attachments",
+            messageObject.files[0],
+            messageObject.files[0].name
+        );
+    }
+    formData.append("text", messageObject.text);
+    try {
+        await axios.post(
+            `https://api.chatengine.io/chats/${chatId}/messages/ `,
+            formData,
+            { headers: headerObject }
+        );
+    } catch (err) {
+        console.log(err);
+    }
+};
 
 const MessageForm = (props) => {
     const [message, setMessage] = useState("");
@@ -14,12 +41,12 @@ const MessageForm = (props) => {
         e.preventDefault();
         const messageText = message.trim();
         if (messageText.length > 0)
-            sendMessage(creds, chatId, { text: messageText });
+            sendChatMessage(creds, chatId, { text: messageText });
         setMessage("");
     };
 
     const handleUpload = (e) => {
-        sendMessage(creds, chatId, { files: e.target.files, text: "" });
+        sendChatMessage(creds, chatId, { files: e.target.files, text: "" });
     };
 
     return (

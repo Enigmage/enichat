@@ -1,9 +1,26 @@
-import { leaveChat } from "react-chat-engine";
+import axios from "axios";
+
+const leaveCurrentChat = async (creds, chatId) => {
+    const { userSecret, userName } = creds;
+    const headerObject = {
+        "Project-ID": process.env.REACT_APP_PROJECT_ID,
+        "User-Name": userName,
+        "User-Secret": userSecret,
+    };
+    try {
+        await axios.delete(
+            `https://api.chatengine.io/chats/${chatId}/people/`,
+            { headers: headerObject }
+        );
+    } catch (err) {
+        console.log(err);
+    }
+};
 
 const UtilityOptions = (props) => {
     const { creds, chatId, chat } = props;
     const leaveGroup = () => {
-        leaveChat(creds, chatId);
+        leaveCurrentChat(creds, chatId);
     };
     const logOutCurrentUser = () => {
         localStorage.removeItem("username");
@@ -24,7 +41,6 @@ const UtilityOptions = (props) => {
                 className="logout-button">
                 Log Out
             </button>
-
         </div>
     );
 };

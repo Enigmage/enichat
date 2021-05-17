@@ -63,7 +63,7 @@ const MessageBubbles = ({ messages, userName, chatId, userSecret }) => {
                         <div key={`msg_${index}`} style={{ width: "100%" }}>
                             <div className="message-block">
                                 {isMyMessage ? (
-                                    message.id == editMessageId ? (
+                                    message.id === editMessageId ? (
                                         <div>
                                             <form
                                                 onSubmit={handleEdit({

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import useForm from "../../utils/useForm";
+import { rememberUser, useForm } from "../../utils";
 
 const SignupForm = ({ isLogin, setLoginStatus }) => {
     const [credentials, setCredentials] = useForm({
@@ -12,6 +12,7 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
         confirmPassword: "",
     });
     const [error, setError] = useState("");
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const headerObject = {
@@ -30,8 +31,7 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
                 await axios.post("https://api.chatengine.io/users/", data, {
                     headers: headerObject,
                 });
-                localStorage.setItem("username", credentials.username);
-                localStorage.setItem("password", credentials.password);
+                rememberUser(credentials.username, credentials.password);
                 setLoginStatus(true);
                 setError("");
             } catch (err) {
@@ -41,7 +41,7 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
     };
     if (isLogin) return <Redirect to="/" />;
     return (
-        <div class="wrapper" style={{overflow:"scroll"}}>
+        <div class="wrapper" style={{ overflow: "scroll" }}>
             <div class="form">
                 <h1 className="title">Enichat</h1>
                 <form onSubmit={handleSubmit}>
@@ -101,7 +101,10 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
                         Already have an account ?{" "}
                         <span style={{ color: "blue" }}>
                             {" "}
-                            <Link to="/login" className="login-link"> Log In </Link>{" "}
+                            <Link to="/login" className="login-link">
+                                {" "}
+                                Log In{" "}
+                            </Link>{" "}
                         </span>
                     </span>
                 </div>

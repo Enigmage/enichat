@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import useForm from "../../utils/useForm";
+import { rememberUser, useForm } from "../../utils";
 
 const LoginForm = ({ isLogin, setLoginStatus }) => {
     const [credentials, setCredentials] = useForm({
@@ -22,8 +22,7 @@ const LoginForm = ({ isLogin, setLoginStatus }) => {
             await axios.get("https://api.chatengine.io/chats", {
                 headers: authObject,
             });
-            localStorage.setItem("username", credentials.username);
-            localStorage.setItem("password", credentials.password);
+            rememberUser(credentials.username, credentials.password);
             setLoginStatus(true);
             setError("");
         } catch (err) {
@@ -64,7 +63,10 @@ const LoginForm = ({ isLogin, setLoginStatus }) => {
                     New user ?{" "}
                     <span style={{ color: "blue" }}>
                         {" "}
-                        <Link to="/signup" className="signup-link"> Sign Up</Link>{" "}
+                        <Link to="/signup" className="signup-link">
+                            {" "}
+                            Sign Up
+                        </Link>{" "}
                     </span>
                 </div>
                 <div align="center">

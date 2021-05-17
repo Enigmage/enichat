@@ -1,5 +1,5 @@
-import GenericProfilePicture from "../../utils/images/generic-profile-pic.png";
 import ModalImage from "react-modal-image";
+import { DefaultProfilePic } from "../../utils";
 
 const TheirMessage = ({ message, lastMessage }) => {
     const isFirstMessage =
@@ -16,7 +16,7 @@ const TheirMessage = ({ message, lastMessage }) => {
                                 message.sender &&
                                 message.sender.avatar
                                     ? `url(${message.sender.avatar})`
-                                    : `url(${GenericProfilePicture})`,
+                                    : `url(${DefaultProfilePic})`,
                         }}
                     />
                 </div>

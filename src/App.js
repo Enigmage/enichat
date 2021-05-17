@@ -5,7 +5,9 @@ import "./App.css";
 
 const App = () => {
     const [isLogin, setLogin] = useState(() =>
-        localStorage.getItem("username") ? true : false
+        localStorage.getItem("username") && localStorage.getItem("password")
+            ? true
+            : false
     );
     const setLoginStatus = (value) => setLogin(value);
     return (
