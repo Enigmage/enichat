@@ -6,5 +6,5 @@ A real time group chat application made using React and [Chat Engine API](https:
 
 ### Dashboard
 
-![dash](.gitimg/dashboard.png)
+![dash](.github/ReadmeAssets/dashboard.png)
 
