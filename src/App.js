@@ -12,7 +12,7 @@ const App = () => {
     const setLoginStatus = (value) => setLogin(value);
     return (
         <Switch>
-            <Route path="/" exact render={() => <Home isLogin={isLogin} />} />
+            <Route path="/" exact render={ () => <Home isLogin={isLogin} /> } />
             <Route
                 path="/login"
                 exact
