@@ -77,9 +77,12 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
                         value={credentials.password}
                         onChange={setCredentials}
                         className={`input ${
-                            credentials.password === credentials.confirmPassword
-                                ? "flash-green"
-                                : "flash-red"
+                            credentials.confirmPassword
+                                ? credentials.password ===
+                                  credentials.confirmPassword
+                                    ? "flash-green"
+                                    : "flash-red"
+                                : ""
                         }`}
                         placeholder="Password"
                         required
@@ -90,9 +93,12 @@ const SignupForm = ({ isLogin, setLoginStatus }) => {
                         value={credentials.confirmPassword}
                         onChange={setCredentials}
                         className={`input ${
-                            credentials.password === credentials.confirmPassword
-                                ? "flash-green"
-                                : "flash-red"
+                            credentials.confirmPassword
+                                ? credentials.password ===
+                                  credentials.confirmPassword
+                                    ? "flash-green"
+                                    : "flash-red"
+                                : ""
                         }`}
                         placeholder="Confirm Password"
                         required
